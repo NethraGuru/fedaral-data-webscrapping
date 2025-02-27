@@ -46,7 +46,7 @@ def clean_data(input_files):
             last_10_years_df = cleaned_df[cleaned_df["Year"] >= latest_year - 10]
 
             # Save to CSV with rate type in filename
-            output_file = f"{output_prefix}.csv"
+            output_file = os.path.join('data', f"{output_prefix}.csv")
             last_10_years_df.to_csv(output_file, index=False)
 
             print(f"Cleaned data saved to {output_file}")

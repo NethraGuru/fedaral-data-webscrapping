@@ -38,7 +38,7 @@ def scrape_full_table(urls_dict, table_selector="table", button_selector="#viewa
                     data.append(cells)
             
             # Save data to CSV using the name from the dictionary key
-            output_file = f"{output_prefix}_{name}.csv"
+            output_file = os.path.join('data', f"{output_prefix}_{name}.csv")
             with open(output_file, "w", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
                 writer.writerows(data)

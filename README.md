@@ -7,7 +7,17 @@ This project scrapes a dynamically loaded table from a JavaScript-rendered webpa
 - **Python 3.8+** installed
 - **Google Chrome** or Chromium-based browser installed
 
----
+## 📁 Project Structure
+```
+.
+├── data/                   # Data files
+│   ├── raw/               # Raw scraped data
+│   └── processed/         # Cleaned and processed data
+├── docs/                  # Documentation files
+├── notebooks/            # Jupyter notebooks
+├── src/                  # Source code
+└── requirements.txt      # Project dependencies
+```
 
 ## 🛠 Installation
 
@@ -43,9 +53,9 @@ urls = {
 
 #### 1️⃣ Run the Scripts
 ```bash
-python3 federal_rate_web_scrapping.py 'url1' 'url2' 'url3'
-python3 clean_data.py file1.csv file2.csv file3.csv
+python3 src/federal_rate_web_scrapping.py 'url1' 'url2' 'url3'
+python3 src/clean_data.py data/table_data_*.csv
 ```
 
 ## Next Steps
-- [ ] Data Analysis using a Notebook
+- [ ] Data Analysis using a Notebook in notebooks/rate_analysis_stats.ipynb
