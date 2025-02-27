@@ -1,9 +1,15 @@
 import pandas as pd
 import re
 import argparse
+import os
 
-def clean_data(input_files, output_prefix="cleaned_data"):
-    for idx, input_file in enumerate(input_files):
+def clean_data(input_files):
+    for input_file in input_files:
+        # Extract rate type from filename
+        filename = os.path.basename(input_file)
+        rate_type = filename.replace('table_data_', '').replace('.csv', '')
+        output_prefix = f"cleaned_{rate_type}"
+
         # Load the CSV file
         df = pd.read_csv(input_file)
 
@@ -39,8 +45,8 @@ def clean_data(input_files, output_prefix="cleaned_data"):
             latest_year = cleaned_df["Year"].max()
             last_10_years_df = cleaned_df[cleaned_df["Year"] >= latest_year - 10]
 
-            # Save to CSV
-            output_file = f"{output_prefix}_{idx+1}.csv"
+            # Save to CSV with rate type in filename
+            output_file = f"{output_prefix}.csv"
             last_10_years_df.to_csv(output_file, index=False)
 
             print(f"Cleaned data saved to {output_file}")
